@@ -1,0 +1,107 @@
+/* General body styling */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Sleek modern font */
+    background-color: #141414; /* Netflix dark background */
+    color: #e5e5e5; /* Light text for contrast */
+    margin: 0;
+    padding: 0;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1f1f1f; /* Dark table background */
+    color: #e5e5e5;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: all 0.3s ease-in-out; /* Smooth transitions */
+}
+
+table:hover {
+    transform: translateY(-5px); /* Slight hover lift effect for a modern touch */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+th, td {
+    padding: 15px; /* More space for readability */
+    border: 1px solid #333;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #007bff, #0056b3); /* Netflix-like vibrant blue gradient */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* More elegant header styling */
+    font-size: 16px;
+}
+
+td {
+    background-color: #2b2b2b; /* Slightly lighter for rows */
+    font-size: 15px;
+}
+
+tr:nth-child(even) td {
+    background-color: #1c1c1c; /* Alternate row color for a sleek look */
+}
+
+tr:hover td {
+    background-color: #333; /* Highlight row hover effect */
+    transition: background-color 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+/* Button styles */
+button {
+    padding: 10px 20px; /* Larger buttons for better UX */
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 50px; /* Smooth, rounded edges */
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Subtle button shadow */
+}
+
+/* Activate and Deactivate buttons */
+button.activate {
+    background: linear-gradient(135deg, #28a745, #218838); /* Smooth green gradient */
+    color: white;
+}
+
+button.deactivate {
+    background: linear-gradient(135deg, #e50914, #d40813); /* Netflix red gradient */
+    color: white;
+}
+
+button:hover {
+    transform: scale(1.1); /* Smooth zoom effect */
+}
+
+button.activate:hover {
+    background: linear-gradient(135deg, #28a745, #1e7e34); /* Darker green on hover */
+}
+
+button.deactivate:hover {
+    background: linear-gradient(135deg, #e50914, #b2060f); /* Darker red on hover */
+}
+
+button:active {
+    transform: scale(0.95); /* Button press effect */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); /* Smaller shadow on click */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    table {
+        font-size: 14px; /* Adjust font size for small screens */
+    }
+
+    button {
+        padding: 8px 16px; /* Adjust button padding for smaller screens */
+    }
+}
