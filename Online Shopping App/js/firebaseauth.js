@@ -56,7 +56,7 @@ signUp.addEventListener('click', (event) => {
             const docRef = doc(db, "users", user.uid);
             setDoc(docRef, userData)
                 .then(() => {
-                    window.location.href = '/Login/login.html';
+                    window.location.href = '../Home/index.html';
                 })
                 .catch((error) => {
                     console.error("Error writing document", error);
@@ -84,7 +84,13 @@ signIn.addEventListener('click', (event) => {
             showMessage('Login successful', 'signInMessage');
             const user = userCredential.user;
             localStorage.setItem('loggedInUserId', user.uid);
-            window.location.href = '/Home/index.html';
+
+            // Redirect based on the email address
+            if (email === 'shivark@gmail.com') {
+                window.location.href = '../Admin/admin.html'; // Redirect to admin.html
+            } else {
+                window.location.href = '../Home/index.html'; // Redirect to index.html
+            }
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -95,6 +101,7 @@ signIn.addEventListener('click', (event) => {
             }
         });
 });
+
 // Google Sign-In for Sign-In Form
 document.getElementById('googleSignIn').addEventListener('click', () => {
     const provider = new GoogleAuthProvider();
@@ -110,13 +117,12 @@ document.getElementById('googleSignIn').addEventListener('click', () => {
             setDoc(docRef, userData, { merge: true })
                 .then(() => {
                     showMessage('Google Sign-in successful', 'signInMessage');
-                    window.location.href = '/Home/index.html';
+                    window.location.href = '../Home/index.html';
                 });
         })
         .catch((error) => {
             showMessage('Google Sign-in failed: ' + error.message, 'signInMessage');
         });
 });
-
 
 

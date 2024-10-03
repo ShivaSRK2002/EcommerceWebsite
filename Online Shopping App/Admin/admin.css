@@ -5,105 +5,146 @@
     box-sizing: border-box;
 }
 
-/* General styles */
+/* General body styling */
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     background-color: #141414; /* Netflix dark background */
     color: #e5e5e5; /* Netflix light text */
-    margin: 0;
-    padding: 0;
     line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Headings */
+h2 {
+    color: #f2f2f2; /* Soft white for headings */
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Smooth animations for fade-in effect */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Input and button styles */
+input, button {
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #333;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+/* Smaller button styles with Netflix red */
+button {
+    background-color: #e50914; /* Netflix red */
+    color: white;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    padding: 8px 14px; /* Reduced padding for smaller buttons */
+    font-size: 14px;    /* Smaller font size */
+    width: auto;        /* Adjust button width */
+}
+
+/* Button hover animation */
+button:hover {
+    background-color: #d40813; /* Darker red on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Depth effect */
+    transform: scale(1.05); /* Scale up on hover */
 }
 
 /* Header styles */
 header {
-    background: #e47911; /* Amazon orange */
+    background: #141414; /* Netflix black */
     color: white;
-    padding: 15px 30px;
+    padding: 20px 50px; /* Increased horizontal padding */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Soft shadow */
+    animation: fadeIn 1s ease-in-out;
 }
 
-header h1 {
+/* Improved header spacing and alignment */
+header .logo {
     font-size: 26px;
     font-weight: bold;
     letter-spacing: 1px;
 }
 
-header button {
-    background: #007bff; /* Netflix-like blue button */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 3px;
-    transition: background 0.3s ease-in-out;
-}
-
-header button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-/* Netflix-inspired navigation and header */
 header nav {
     display: flex;
-    gap: 20px;
+    gap: 30px; /* Larger gap for better alignment */
 }
 
 header nav a {
     color: white;
     font-weight: 500;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
+    font-size: 16px;
 }
 
 header nav a:hover {
     color: #ffd700; /* Netflix yellow hover */
 }
 
-/* Admin options section */
-#adminOptions {
-    display: flex;
-    justify-content: center;
-    margin: 30px 0;
-}
-
-#adminOptions button {
-    background-color: #28a745; /* Amazon green */
+/* Netflix red button for header actions */
+header button {
+    background: #e50914;
     border: none;
     color: white;
-    padding: 12px 18px;
-    margin: 0 10px;
+    padding: 8px 14px; /* Smaller padding for header button */
     cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease-in-out;
+    font-size: 14px;
+    border-radius: 3px;
+    transition: background 0.3s ease-in-out;
 }
 
-#adminOptions button:hover {
-    background-color: #218838; /* Darker green on hover */
+header button:hover {
+    background-color: #d40813;
 }
 
 /* Section styles */
 section {
-    background: #222; /* Netflix black card background */
-    padding: 30px;
-    margin: 20px auto;
+    background: #222; /* Netflix card background */
+    padding: 40px;
+    margin: 40px auto;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Deep shadow for a premium feel */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Deep shadow for premium feel */
     max-width: 900px;
     color: white;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-h2 {
-    color: #f2f2f2; /* Soft white for headings */
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: bold;
+/* Section hover effect */
+section:hover {
+    transform: translateY(-10px); /* Lift effect */
+    background-color: #1a1a1a; /* Slightly lighter background */
+}
+
+/* Smooth section fade-in */
+section {
+    animation: fadeIn 1s ease-in-out;
 }
 
 /* Form styles */
@@ -123,35 +164,14 @@ form input, form select {
     font-size: 16px;
 }
 
-form input[type="file"] {
-    background-color: transparent;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-form button {
-    background-color: #e50914; /* Netflix red */
-    border: none;
-    color: white;
-    padding: 12px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease-in-out;
-}
-
-form button:hover {
-    background-color: #d40813; /* Darker red on hover */
-}
-
-/* Inventory table styles */
+/* Table styles for inventory */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     background-color: #2b2b2b;
     color: white;
+    animation: fadeIn 1s ease-in-out;
 }
 
 th, td {
@@ -161,22 +181,19 @@ th, td {
 }
 
 th {
-    background: #007bff; /* Blue header like Netflix */
+    background: #e50914; /* Netflix red header */
     color: white;
     font-weight: bold;
 }
 
 td {
     background: #333; /* Dark table cells */
-    color: #f1f1f1;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-tr:nth-child(even) {
-    background: #2b2b2b; /* Alternate row color */
-}
-
+/* Row hover effect */
 tr:hover {
-    background: #444;
+    background-color: #444;
     color: #ffd700; /* Netflix gold hover */
 }
 
@@ -185,13 +202,14 @@ tr:hover {
     border-radius: 5px;
 }
 
-/* Alert message styles */
+/* Success/Error Alert Styles */
 .alert {
     margin-top: 15px;
     padding: 15px;
     border-radius: 5px;
     text-align: center;
     font-weight: bold;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 .success {
@@ -208,15 +226,54 @@ tr:hover {
     display: none;
 }
 
+/* Categories list styles */
+#categoriesList div {
+    background-color: #e5e5e5;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#categoriesList div:hover {
+    background-color: #dcdcdc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02); /* Slight scaling on hover */
+}
+
+#categoriesList div span {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Delete icon styling */
+#categoriesList div .deleteIcon {
+    background-color: #ff4c4c;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#categoriesList div .deleteIcon:hover {
+    background-color: #d43f3f;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
         align-items: center;
+        padding: 15px;
     }
 
     header nav {
         flex-direction: column;
+        gap: 15px;
     }
 
     header button {
@@ -224,6 +281,6 @@ tr:hover {
     }
 
     section {
-        padding: 15px;
+        padding: 20px;
     }
 }

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Report</title>
+    <link rel="stylesheet" href="generateReport.css"> <!-- Link to CSS file -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <div id="navbar"></div> <!-- Placeholder for the navbar -->
+</head>
+<body>
+    <div class="container">
+        <h1>Customer Report</h1>
+
+        <!-- All Customers Report -->
+        <section>
+            <h2>All Customers Details</h2>
+            <button id="generateUserReport">Generate Customer Report</button>
+        </section>
+
+        <!-- Top 10 Customers Report -->
+        <section>
+            <h2>Top 10 Customers</h2>
+            <label for="topFromDate">From Date:</label>
+            <input type="date" id="topFromDate">
+            <label for="topToDate">To Date:</label>
+            <input type="date" id="topToDate">
+            <button id="generateTopCustomersReport">Generate Report</button>
+        </section>
+
+        <!-- Cash Purchase Report -->
+        <section>
+            <h2>Cash Purchase Report</h2>
+            <label for="cashFromDate">From Date:</label>
+            <input type="date" id="cashFromDate">
+            <label for="cashToDate">To Date:</label>
+            <input type="date" id="cashToDate">
+            <button id="generateCashPurchaseReport">Generate Report</button>
+        </section>
+
+        <!-- Credit Purchase Report -->
+        <section>
+            <h2>Credit Purchase Report</h2>
+            <label for="creditFromDate">From Date:</label>
+            <input type="date" id="creditFromDate">
+            <label for="creditToDate">To Date:</label>
+            <input type="date" id="creditToDate">
+            <button id="generateCreditPurchaseReport">Generate Report</button>
+        </section>
+
+        <div>
+            <h2>Product Reports</h2>
+            <div>
+                <h3>Current Stock</h3>
+                <select id="categorySelect">
+                    <option value="all">All Categories</option>
+                    <!-- Categories will be populated here dynamically -->
+                </select>
+                <button id="generateCurrentStockReport">Generate Current Stock Report</button>
+            </div>
+
+            <div>
+                <h3>High Stock Report</h3>
+                <button id="generateHighStockReport">Generate High Stock Report</button>
+            </div>
+
+            <div>
+                <h3>Low Stock Report</h3>
+                <button id="generateLowStockReport">Generate Low Stock Report</button>
+            </div>
+
+            <div id="reportOutput"></div>
+        </div>
+
+        <h1>Sales Report</h1>
+
+        <!-- All Customers Report -->
+        <section>
+            <h2>All Sales Report</h2>
+            <label for="allFromDate">From Date:</label>
+            <input type="date" id="allFromDate">
+            <label for="allToDate">To Date:</label>
+            <input type="date" id="allToDate">
+            <button id="generateAllCustomersReport">Generate Report</button>
+        </section>
+
+        <section>
+            <h2>Category Wise Report</h2>
+            <select id="salescategorySelect">
+                <option value="">Select Categories</option>
+                <!-- Categories will be populated here dynamically -->
+            </select>
+            <label for="allsalescatFromDate">From Date:</label>
+            <input type="date" id="allsalescatFromDate"/>
+            <label for="allsalescatToDate">To Date:</label>
+            <input type="date" id="allsalescatToDate"/>
+            
+            <button id="generateAllSalesCatWiseReport">Generate Report</button>
+        </section>
+
+
+        <section>
+           
+            <h2>Top 10 Selling products Report</h2>
+            <label for="fromtop10prodDate">From Date:</label>
+            <input type="date" id="fromtop10prodDate" name="fromtop10prodDate">
+            <label for="totop10prodDate">To Date:</label>
+<input type="date" id="totop10prodDate" name="totop10prodDate">
+            <button id="generateTop10Report">Generate Top 10 Selling Products Report</button>
+        </section>
+
+        <section>
+            
+            <h2>Bottom 10 Selling products Report</h2>
+            <label for="frombottom10prodDate">From Date:</label>
+            <input type="date" id="frombottom10prodDate" name="frombottom10prodDate">
+            <label for="tobottom10prodDate">To Date:</label>
+<input type="date" id="tobottom10prodDate" name="tobottom10prodDate">
+            <button id="generateBottom10Report">Generate Bottom 10 Selling Products Report</button>
+        </section>
+    </div>
+
+    <script src="generateReport.js"></script>
+</body>
+</html>

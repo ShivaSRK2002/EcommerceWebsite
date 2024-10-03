@@ -1,0 +1,88 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #141414; /* Dark background for Netflix theme */
+    color: #fff; /* Light text for contrast */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #222; /* Darker container */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.summary {
+    margin-bottom: 20px;
+}
+
+.payment-method {
+    margin-bottom: 20px;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Align items vertically */
+}
+
+.payment-method label {
+    margin-right: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+.payment-method input[type="radio"] {
+    margin: 5px 0; /* Spacing for radio buttons */
+}
+
+.confirm-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #e50914; /* Netflix red */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #fff; /* White text for contrast */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.confirm-button:hover {
+    background-color: #f40612; /* Darker red on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+.order-summary {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #444; /* Subtle border for the summary */
+    border-radius: 8px;
+    background-color: #333; /* Darker background for the summary */
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 20px; /* Reduce margin on smaller screens */
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+
+    .confirm-button {
+        font-size: 14px; /* Smaller button text on mobile */
+    }
+}
+ /* Loading spinner styles */
+ .loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 10px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

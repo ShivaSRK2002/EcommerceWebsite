@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="cart.css"> <!-- Add your stylesheet if needed -->
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <h1><a href="../Home/index.html">EasyPeasyBuy</a></h1> <!-- Logo/Brand -->
+        </div>
+
+        <!-- Large Search Bar -->
+        <div class="navbar-center">
+            <input type="text" class="search-bar" placeholder="Search for products, brands and more">
+            <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <!-- User Account, Orders, and Cart -->
+        <div class="navbar-right">
+            <p class="navbar-link"><a href="../Home/index.html">Home</a></p>
+            <p class="navbar-link"><a href="../Collections/collection.html">Collections</a></p>
+            <p class="navbar-link"><a href="../Login/login.html">Logout</a></p>
+            <!-- <p class="navbar-link"><a href="../Login/login.html">Sign In</a></p> -->
+            <p class="navbar-link"><a href="../Orders/orders.html">Orders</a></p>
+            <a href="../Cart/cart.html">
+                <button class="cart-button">
+                    <i class="fa-solid fa-cart-shopping"></i> Cart
+                </button>
+            </a>
+        </div>
+
+        <!-- Hamburger Menu for smaller screens -->
+        <div class="navbar-menu" onclick="showNavbar()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Side Navbar -->
+    <!-- <div class="side-navbar">
+        <p style="text-align: right;" onclick="closeNavbar()">
+            <i class="fa-solid fa-xmark"></i>
+        </p>
+        <div class="side-navbar-links">
+            <p class="side-navbar-link"><a href="../Home/index.html">Home</a></p>
+            <p class="side-navbar-link"><a href="../Collections/collection.html">Collections</a></p>
+            <p class="side-navbar-link"><a href="../Login/login.html">Logout</a></p>
+        </div>
+    </div> -->
+
+    <!-- Cart Display -->
+    <div id="cart"></div>
+
+    <!-- Customer Delivery Address -->
+    <h2>Delivery Details</h2>
+    <form class="delivery-form">
+        <div class="form-row">
+            <label for="customerName">Name:</label>
+            <input type="text" id="customerName">
+        </div>
+
+        <div class="form-row">
+            <label for="customerEmail">Email:</label>
+            <input type="email" id="customerEmail">
+        </div>
+
+        <div class="form-row">
+            <label for="customerPhone">Phone:</label>
+            <input type="text" id="customerPhone">
+        </div>
+
+        <div class="form-row">
+            <label for="customerAddress">Address:</label>
+            <textarea id="customerAddress" required></textarea>
+        </div>
+    </form>
+
+    <!-- Confirm Payment Button -->
+    <button id="confirmPaymentBtn" class="confirm-button">Confirm and Proceed</button>
+
+    <script src="cart.js"></script> <!-- Link to your cart JavaScript -->
+</body>
+</html>
