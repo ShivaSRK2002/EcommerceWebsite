@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Page</title>
+    <link rel="stylesheet" href="bill.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Order Summary</h2>
+
+    <!-- Order summary will be populated here -->
+    <div class="summary" id="orderSummary"></div>
+
+    <!-- Payment options -->
+    <div class="payment-method">
+        <h3>Select Payment Method</h3>
+        <label><input type="radio" name="payment" value="Cash" checked> Cash</label>
+        <label><input type="radio" name="payment" value="Credit"> Credit</label>
+        <label><input type="radio" name="payment" value="Online Transaction"> Online Transaction</label>
+    </div>
+
+    <!-- Confirm payment button -->
+    <button class="confirm-button" id="payButton">Pay</button>
+
+    <!-- Success message and final order summary -->
+    <div class="order-summary" id="orderSuccessMessage"></div>
+</div>
+
+<script src="bill.js">
+
+</script>
+
+</body>
+</html>

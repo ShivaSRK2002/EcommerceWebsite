@@ -1,28 +1,31 @@
+/* Reset */
 * {
     padding: 0;
     margin: 0;
-    box-sizing: border-box; /* Ensure consistent box sizing */
+    box-sizing: border-box;
 }
 
+/* Body Styles */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #141414; /* Dark background similar to Netflix */
     color: #ffffff; /* White text color */
 }
 
-/* Navbar */
+/* Navbar Styles */
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #232F3E; /* Darker navbar */
     padding: 10px 20px;
+    transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 .navbar-left h1 {
     margin: 0;
     font-size: 24px;
-    color: white; /* White text */
+    color: white;
 }
 
 .navbar-left h1 a {
@@ -39,28 +42,38 @@ body {
 }
 
 .search-bar {
-    width: 60%; /* Increased width */
-    padding: 12px; /* Slightly larger padding */
-    border-radius: 20px;
+    width: 400px; /* Set width for larger screens */
+    padding: 12px 15px;
+    border-radius: 25px; /* More rounded corners */
     border: 1px solid #ddd;
     font-size: 16px;
+    transition: width 0.4s ease; /* Smooth transition */
+    background-color: #ffffff; /* White background for contrast */
+    color: #141414; /* Dark text color */
 }
 
+.search-bar:focus {
+    width: 450px; /* Expand when focused */
+    outline: none; /* Remove outline */
+    border-color: #febd69; /* Highlight border color */
+}
+
+/* Search Button */
 .search-button {
     padding: 12px 15px;
     background-color: #febd69; /* Gold color */
     border: none;
     cursor: pointer;
-    border-radius: 0 20px 20px 0;
-    transition: background-color 0.3s;
+    border-radius: 0 25px 25px 0; /* Rounded right corners */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+    display: flex; /* Align items in flexbox */
+    align-items: center; /* Center icon vertically */
+    margin-left: -1px; /* Adjust to align with search bar */
 }
 
 .search-button:hover {
-    background-color: #f0c14b; /* Lighter gold on hover */
-}
-
-.search-button i {
-    color: black;
+    background-color: #f0c14b; /* Change on hover */
+    transform: scale(1.05); /* Slight scale effect */
 }
 
 /* Navbar Right Section */
@@ -78,10 +91,16 @@ body {
 .navbar-link a {
     color: white;
     text-decoration: none;
+    transition: color 0.3s; /* Smooth transition */
 }
 
+.navbar-link a:hover {
+    color: #febd69; /* Change color on hover */
+}
+
+/* Cart Button */
 .cart-button {
-    background-color: #febd69; /* Gold */
+    background-color: #febd69; /* Gold color */
     padding: 10px 15px;
     border: none;
     color: black;
@@ -90,6 +109,12 @@ body {
     align-items: center;
     cursor: pointer;
     border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.cart-button:hover {
+    background-color: #f0c14b; /* Change on hover */
+    transform: scale(1.05); /* Slight scale effect */
 }
 
 .cart-button i {
@@ -128,10 +153,11 @@ body {
     text-decoration: underline; /* Underline on hover */
 }
 
-/* Header */
+/* Header Styles */
 .header {
     display: flex;
     justify-content: center;
+    align-items: center; /* Center vertically */
     gap: 20px;
     padding: 50px;
     text-align: center;
@@ -148,19 +174,21 @@ body {
 }
 
 /* Images */
-.header-image, .new-arrival-container img {
+.header-image,
+.new-arrival-container img {
     max-width: 100%; /* Allows the image to scale within the parent */
     height: auto; /* Maintains aspect ratio */
     object-fit: cover; /* Ensures the image covers the area without stretching */
     border-radius: 10px; /* Maintain rounding */
 }
 
-/* Service */
+/* Service Styles */
 .service {
     padding: 20px;
 }
 
-.service-container-1, .service-container-2 {
+.service-container-1,
+.service-container-2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -189,7 +217,7 @@ body {
     cursor: pointer; /* Pointer cursor */
 }
 
-/* Footer */
+/* Footer Styles */
 .footer {
     margin-top: 20px;
     padding: 40px;
@@ -197,7 +225,7 @@ body {
     color: #ffffff; /* White text */
 }
 
-/* Product Search */
+/* Product Search Styles */
 .product-search {
     width: 80%;
     border: solid #ffffff 2px; /* White border */
@@ -220,7 +248,7 @@ body {
     outline: none; /* No outline */
 }
 
-/* Products */
+/* Products Styles */
 .products {
     padding: 20px;
     display: flex;
@@ -238,7 +266,7 @@ body {
     border-radius: 10px; /* Maintain rounding */
 }
 
-/* Product Card */
+/* Product Card Styles */
 .products-container {
     display: flex;
     flex-wrap: wrap;
@@ -284,7 +312,7 @@ body {
     background-color: #218838;
 }
 
-/* Pagination */
+/* Pagination Styles */
 .pagination {
     display: flex;
     justify-content: center;
@@ -335,62 +363,30 @@ body {
 }
 
 .modal-close {
+    cursor: pointer;
     float: right;
-    cursor: pointer;
-    font-size: 20px;
-}
-
-/* Product Item */
-.product-item {
-    display: inline-block;
-    margin: 20px;
-    text-align: center;
-}
-
-.product-item img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-/* Cart Button Styling */
-.cart-button {
-    background-color: #ff6347; /* Tomato color for the button */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-/* Hover Animation */
-.cart-button:hover {
-    background-color: #ff4500; /* Darker shade on hover */
-    transform: scale(1.1); /* Slight zoom effect */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow */
-}
-
-/* Bounce Animation */
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-.cart-button:active {
-    animation: bounce 0.5s;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .search-bar {
-        width: 80%; /* Adjust width on smaller screens */
+    .navbar-left h1 {
+        font-size: 20px; /* Adjust logo size for smaller screens */
     }
-    
-    .products {
-        flex-direction: column; /* Stack products vertically */
-        align-items: center; /* Center align */
+
+    .search-bar {
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    .navbar-right {
+        display: none; /* Hide right section for smaller screens */
+    }
+
+    .navbar-menu {
+        display: block; /* Show hamburger menu */
+    }
+
+    .new-arrival-container {
+        flex-basis: 45%; /* Adjust for smaller screens */
+        max-width: 150px; /* Set a max width to limit the size */
     }
 }

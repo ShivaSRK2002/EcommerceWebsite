@@ -1,0 +1,279 @@
+/* Body Styles */
+body {
+    font-family: 'Poppins', sans-serif; /* Changed to Poppins for consistency */
+    background-color: #141414; /* Dark background */
+    color: #ffffff; /* White text for contrast */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Main Heading */
+h1 {
+    color: #e50914; /* Netflix red */
+    margin-bottom: 20px;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #232F3E; /* Darker navbar */
+    padding: 10px 20px;
+    position: fixed; /* Fixed navbar */
+    width: 100%;
+    top: 0;
+    z-index: 1000; /* Ensure navbar stays on top */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+}
+
+/* Navbar Left */
+.navbar-left h1 {
+    margin: 0;
+    font-size: 24px;
+    color: white;
+}
+
+.navbar-left h1 a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s; /* Smooth transition */
+}
+
+.navbar-left h1 a:hover {
+    color: #febd69; /* Change color on hover */
+}
+
+/* Center Search Bar */
+.navbar-center {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.search-bar {
+    width: 400px; /* Set width for larger screens */
+    padding: 12px 15px;
+    border-radius: 25px; /* More rounded corners */
+    border: 1px solid #ddd;
+    font-size: 16px;
+    transition: width 0.4s ease, border-color 0.4s ease; /* Smooth transition */
+    background-color: #ffffff; /* White background for contrast */
+    color: #141414; /* Dark text color */
+}
+
+.search-bar:focus {
+    width: 450px; /* Expand when focused */
+    outline: none; /* Remove outline */
+    border-color: #febd69; /* Highlight border color */
+}
+
+/* Search Button */
+.search-button {
+    padding: 12px 15px;
+    background-color: #febd69; /* Gold color */
+    border: none;
+    cursor: pointer;
+    border-radius: 0 25px 25px 0; /* Rounded right corners */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+    display: flex; /* Align items in flexbox */
+    align-items: center; /* Center icon vertically */
+    margin-left: -1px; /* Adjust to align with search bar */
+}
+
+.search-button:hover {
+    background-color: #f0c14b; /* Change on hover */
+    transform: scale(1.05); /* Slight scale effect */
+}
+
+/* Navbar Right Section */
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-link {
+    margin: 0 10px;
+    color: white;
+    font-size: 14px;
+    transition: color 0.3s; /* Smooth transition */
+}
+
+.navbar-link a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-link a:hover {
+    color: #febd69; /* Change color on hover */
+}
+
+/* Cart Button */
+.cart-button {
+    background-color: #febd69; /* Gold color */
+    padding: 10px 15px;
+    border: none;
+    color: black;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.cart-button:hover {
+    background-color: #f0c14b; /* Change on hover */
+    transform: scale(1.05); /* Slight scale effect */
+}
+
+.cart-button i {
+    margin-right: 5px;
+}
+
+/* Search and Filter Containers */
+.search-container,
+.filter-container,
+.sort-container {
+    width: 100%;
+    max-width: 600px; /* Centering and limiting width */
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Center items vertically */
+    margin: 10px 0;
+}
+
+/* Input Styles */
+input[type="text"],
+select {
+    padding: 10px;
+    border: 1px solid #333; /* Darker border for inputs */
+    border-radius: 5px;
+    background-color: #333; /* Input background */
+    color: #fff; /* Input text color */
+    flex: 1; /* Allow inputs to take available space */
+    margin-right: 10px; /* Spacing between elements */
+}
+
+/* Button Styles */
+button {
+    padding: 10px 15px;
+    background-color: #e50914; /* Netflix red */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #f40612; /* Darker red on hover */
+}
+
+/* Order List Styles */
+#orderList {
+    margin-top: 100px; /* Push down from fixed navbar */
+    width: 100%;
+    max-width: 800px; /* Centering and limiting width */
+    display: grid; /* Use grid layout for orders */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Spacing between cards */
+}
+
+.order {
+    background-color: #222; /* Card background */
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    transition: transform 0.2s; /* Smooth hover effect */
+}
+
+.order:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+h3 {
+    color: #e50914; /* Title color */
+    margin-bottom: 10px;
+}
+
+p {
+    margin: 5px 0;
+}
+
+/* Pagination Styles */
+.pagination {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.pagination button {
+    background-color: #e50914; /* Pagination button color */
+    margin: 0 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+    background-color: #f40612; /* Darker red on hover */
+}
+
+/* Hamburger Menu */
+.navbar-menu {
+    display: none; /* Hide by default */
+    cursor: pointer;
+}
+
+/* Side Navbar */
+.side-navbar {
+    background-color: #000000; /* Black background for sidebar */
+    width: 250px; /* Fixed width */
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Initially hidden */
+    padding: 20px;
+    color: #ffffff; /* White text */
+    transition: 0.3s; /* Smooth transition */
+}
+
+.side-navbar-link {
+    margin-bottom: 30px;
+}
+
+.side-navbar-links a {
+    text-decoration: none;
+    color: #ffffff; /* White links */
+}
+
+.side-navbar-links a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: flex; /* Show on smaller screens */
+    }
+
+    .navbar-right,
+    .navbar-center {
+        display: none; /* Hide on smaller screens */
+    }
+
+    .side-navbar {
+        left: 0; /* Show side navbar */
+    }
+
+    #orderList {
+        margin-top: 60px; /* Adjust for fixed navbar */
+    }
+}

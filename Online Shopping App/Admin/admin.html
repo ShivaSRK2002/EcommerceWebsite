@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +9,13 @@
 <body>
     <header>
         <h1>Admin Dashboard</h1>
-        <button id="logoutBtn">Logout</button>
+        <a href="../Login/login.html"><button id="logoutBtn">Logout</button></a>
     </header>
  
     <!-- Admin Options -->
     <div id="adminOptions">
+        <button id="categoryBtn">Category</button>
+        <div id="CategoryMessage" class="alert hidden"></div>
         <button id="addItemBtn">Add Item to Inventory</button>
         <div id="addItemMessage" class="alert hidden"></div>
        
@@ -29,19 +30,52 @@
        
         <button id="deleteItemBtn">Delete Item</button>
         <div id="deleteItemMessage" class="alert hidden"></div>
+
+        <!-- New Reports Button -->
+        <button id="reportsBtn">Reports</button>
+        <div id="reportsMessage" class="alert hidden"></div>
     </div>
- 
+
+    <!-- Category Section (initially hidden) -->
+    <section id="categorySection" class="hidden">
+        <h2>Manage Categories</h2>
+        <form id="categoryForm">
+            <!-- Create Category with ID -->
+            <input type="text" id="categoryIdInput" placeholder="Category ID" />
+            <input type="text" id="categoryNameInput" placeholder="Category Name" />
+            <button type="submit" id="createCategoryBtn">Create Category</button>
+    
+            <!-- Update Category -->
+            <input type="text" id="updateCategoryIdInput" placeholder="Category ID for Update" />
+            <input type="text" id="updateCategoryNameInput" placeholder="New Category Name"  />
+            <button type="submit" id="updateCategoryBtn">Update Category</button>
+    
+            <!-- Fetch All Categories -->
+            <button type="button" id="fetchCategoriesBtn">Show All Categories</button>
+    
+            <!-- Delete Category -->
+            <input type="text" id="deleteCategoryIdInput" placeholder="Category ID for Deletion"  />
+            <button type="submit" id="deleteCategoryBtn">Delete Category</button>
+    
+            <!-- Display Categories List -->
+            <div id="categoriesList"></div>
+        </form>
+    </section>
+    
     <!-- Add Item Section -->
     <section id="addItemSection" class="hidden">
         <h2>Add Item to Inventory</h2>
         <form id="inventoryForm">
             <input type="text" id="id" placeholder="Id" required>
-            <input type="text" id="cat_id" placeholder="Category Id" required>
+            <label for="cat_id">Category:</label>
+            <select id="cat_id">
+                <!-- Options will be populated dynamically -->
+            </select>
             <input type="text" id="title" placeholder="Title" required>
             <input type="text" id="description" placeholder="Description" required>
             <input type="number" id="quantity" placeholder="Quantity" required>
             <input type="number" id="price" placeholder="Price" required>
-            <input type="file" id="image" accept="image/*" required>
+            <input type="file" id="image" accept="image/*">
             <button type="submit">Add Record</button>
         </form>
     </section>
@@ -67,12 +101,21 @@
     <section id="creditLimitSection" class="hidden">
         <h2>Edit Customer Credit Limit</h2>
         <form id="editCreditLimitForm">
-            <input type="email" id="customer-email" placeholder="Customer Email" required>
-            <input type="number" id="credit-limit" placeholder="New Credit Limit" required>
+            <!-- Input for customer email -->
+            <div class="form-group">
+                <label for="customer-email">Customer Email:</label>
+                <input type="email" id="customer-email" placeholder="Enter Customer Email" required>
+            </div>
+            <!-- Input for new credit limit -->
+            <div class="form-group">
+                <label for="credit-limit">New Credit Limit:</label>
+                <input type="number" id="credit-limit" placeholder="Enter New Credit Limit" required min="0">
+            </div>
+            <!-- Button to submit the form -->
             <button type="submit">Update Credit Limit</button>
         </form>
     </section>
- 
+    
     <!-- Update Item Section -->
     <section id="updateItemSection" class="hidden">
         <h2>Update Item</h2>
@@ -95,9 +138,16 @@
         <button id="fetchAllItemsBtn">Show All Items</button>
         <div id="deleteItemsList" class="hidden"></div>
     </section>
- 
+
+    <!-- Reports Section (initially hidden) -->
+    <section id="reportsSection" class="hidden">
+        <h2>Reports</h2>
+        <p>Select a report to generate:</p>
+        <button id="salesReportBtn">Sales Report</button>
+        <button id="reportsBtn" onclick="location.href='../Reports/reports.html'">Reports</button>
+        <div id="reportsMessage" class="alert hidden"></div>
+    </section>
+
     <script src="../js/inventory.js"></script>
 </body>
 </html>
- 
- 

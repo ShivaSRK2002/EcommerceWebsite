@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Item</title>
+    <style>
+        /* General styling for the delete section */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #deleteItemSection {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        /* Table styling */
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 18px;
+            text-align: left;
+            background-color: #fff;
+        }
+
+        .styled-table th, .styled-table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+        }
+
+        .styled-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .styled-table td img {
+            border-radius: 5px;
+        }
+
+        .styled-table button {
+            padding: 5px 10px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .styled-table button:hover {
+            background-color: #c0392b;
+        }
+
+        #fetchAllItemsBtn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #009879;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #fetchAllItemsBtn:hover {
+            background-color: #007965;
+        }
+
+        #deleteItemsTableContainer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <section id="deleteItemSection">
+        <h2>Delete Item</h2>
+        
+
+        <!-- Table to display items for deletion -->
+        <div id="deleteItemsTableContainer" class="hidden">
+            <table id="deleteItemsTable" class="styled-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Category ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="deleteItemsTableBody">
+                    <!-- Items will be dynamically populated here -->
+                </tbody>
+            </table>
+             <!-- Pagination controls -->
+        <div id="paginationControls">
+            <button id="prevPageBtn" disabled>&laquo; Previous</button>
+            <span id="pageInfo">Page 1</span>
+            <button id="nextPageBtn">Next &raquo;</button>
+        </div>
+        </div>
+    </section>
+    <script>
+        const apiUrl = 'https://firestore.googleapis.com/v1/projects/online-shopping-app-88c5b/databases/(default)/documents/inventory';
+        let allItems = []; // To hold all fetched items
+        let currentPage = 1; // Track the current page
+        const itemsPerPage = 10; // Display 10 records per page
+    
+        // Fetch and display items when the page loads
+        window.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('Failed to fetch items.');
+    
+                const data = await response.json();
+                allItems = data.documents || []; // Store all fetched items
+    
+                currentPage = 1; // Reset to page 1 whenever we fetch new data
+                renderPage(); // Render the first page
+    
+                document.getElementById('deleteItemsTableContainer').classList.remove('hidden');
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        });
+    
+        // Function to render the current page
+        function renderPage() {
+            const deleteItemsTableBody = document.getElementById('deleteItemsTableBody');
+            deleteItemsTableBody.innerHTML = ''; // Clear previous table rows
+    
+            // Calculate start and end index for the current page
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const itemsToDisplay = allItems.slice(start, end); // Get the items for the current page
+    
+            // Populate the table with the items for the current page
+            itemsToDisplay.forEach(item => {
+                const itemId = item.name.split('/').pop(); // Get item ID from the document path
+                const fields = item.fields;
+    
+                const catId = fields.Cat_id?.integerValue || 'N/A';
+                const title = fields.Title?.stringValue || 'N/A';
+                const description = fields.Description?.stringValue || 'N/A';
+                const quantity = fields.Quantity?.integerValue || 'N/A';
+                const price = fields.Price?.doubleValue ? `$${fields.Price.doubleValue.toFixed(2)}` : 'N/A';
+                const imageUrl = fields.ImageUrl?.stringValue || 'https://via.placeholder.com/50';
+    
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${itemId}</td>
+                    <td>${catId}</td>
+                    <td>${title}</td>
+                    <td>${description}</td>
+                    <td>${quantity}</td>
+                    <td>${price}</td>
+                    <td><img src="${imageUrl}" alt="Item Image" width="50"></td>
+                    <td><button class="deleteItemBtn" data-id="${itemId}">Delete</button></td>
+                `;
+                deleteItemsTableBody.appendChild(row);
+            });
+    
+            updatePaginationControls(); // Update the pagination controls
+        }
+    
+        // Function to update the pagination controls
+        function updatePaginationControls() {
+            const totalPages = Math.ceil(allItems.length / itemsPerPage); // Calculate total number of pages
+    
+            // Update page info
+            document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
+    
+            // Disable "Previous" button on the first page
+            document.getElementById('prevPageBtn').disabled = currentPage === 1;
+    
+            // Disable "Next" button on the last page
+            document.getElementById('nextPageBtn').disabled = currentPage === totalPages;
+        }
+    
+        // Event listeners for pagination buttons
+        document.getElementById('prevPageBtn').addEventListener('click', function() {
+            if (currentPage > 1) {
+                currentPage--;
+                renderPage(); // Re-render the page after changing the page number
+            }
+        });
+    
+        document.getElementById('nextPageBtn').addEventListener('click', function() {
+            const totalPages = Math.ceil(allItems.length / itemsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderPage(); // Re-render the page after changing the page number
+            }
+        });
+    
+        // Delete item button functionality - inside the table
+        document.getElementById('deleteItemsTableBody').addEventListener('click', async function(event) {
+            if (event.target.classList.contains('deleteItemBtn')) {
+                const itemId = event.target.getAttribute('data-id');
+                try {
+                    const response = await fetch(`${apiUrl}/${itemId}`, {
+                        method: 'DELETE'
+                    });
+    
+                    if (!response.ok) throw new Error('Failed to delete item.');
+    
+                    alert('Item deleted successfully!');
+                    allItems = allItems.filter(item => item.name.split('/').pop() !== itemId); // Remove deleted item from array
+                    renderPage(); // Re-render the current page
+                } catch (error) {
+                    alert('Error: ' + error.message);
+                }
+            }
+        });
+    </script>
+    
+    
+</body>
+</html>
